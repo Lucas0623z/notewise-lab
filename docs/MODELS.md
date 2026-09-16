@@ -1,4 +1,25 @@
-# 模型环境与真实音频链路
+# 模型说明：安装版自动准备与开发者手动配置
+
+## Windows 安装版用户：无需手动配置模型
+
+**使用 NoteWise Lab 0.2.0 的 `NoteWise-Lab-Setup-0.2.0-x64.exe` 安装后，不需要自己安装 Python、下载权重、填写模型路径或执行下文命令。**
+
+正常使用只需：**安装应用 → 打开 NoteWise Lab → 等待首次自动准备完成 → 上传音频**。
+
+安装向导先安装桌面应用及内置 Python；模型和较大的识别依赖在**第一次打开应用时**自动联网下载、安装和校验，不是在安装向导结束时就全部准备完成。「新建转录」会显示实际准备阶段，服务就绪后即可上传；失败时可查看日志并点击「重试连接」。
+
+| 识别能力 | 0.2.0 安装版如何准备 |
+| --- | --- |
+| Demucs 标准四轨、实验六轨 | 首次启动自动下载并校验两套权重 |
+| Basic Pitch 通用音符转录 | 自动安装依赖；ONNX 权重随对应 Python 包提供 |
+| 钢琴专用识别 | 首次启动自动安装依赖，并下载、校验钢琴权重 |
+| 镲片击打点 | 随应用提供，不需要单独下载模型 |
+
+上述模型均由程序管理；在上传页选择「钢琴专用识别」或开启「镲片 MIDI」只是选择处理方式，不是要求用户另外安装。当前安装版自动准备 **CPU 环境**，不要求 NVIDIA 显卡或 CUDA。首次需联网，建议预留至少 **10 GB** 磁盘空间；准备完成后复用本机模型。具体使用步骤见 [桌面安装说明](DESKTOP.md#安装与首次启动)。
+
+**下文的终端命令、虚拟环境和路径配置只供源码开发、GPU 定制或继续使用旧外部环境的人参考。** 如果主动提供了 `recognition.local.json` 或 Python/后端环境变量，程序会优先使用该外部环境，不会替换它；普通安装用户无需创建这些配置。
+
+自动准备的实现与固定模型清单分别见 [`scripts/setup_runtime.py`](../scripts/setup_runtime.py)、[`backend/distribution-manifest.json`](../backend/distribution-manifest.json)，开发者可查阅 [准备流程](../scripts/README_RUNTIME.md)。
 
 ## 当前实现
 
@@ -20,7 +41,9 @@
 
 无效组合由 API 拒绝。显式选择的钢琴专用模型缺依赖、缺权重或运行失败时会报错，不静默改用 Basic Pitch。旧调用省略新字段时仍采用 Basic Pitch，且不生成鼓 MIDI。
 
-## 可选钢琴专用转录：`piano_highres`
+## 钢琴专用转录：`piano_highres`
+
+安装版会自动准备该模型。用户在上传页选择是否使用它；下面的调用命令是开发接口说明。
 
 对已知钢琴录音或分离后的钢琴轨，可使用作者的 [High-resolution Piano Transcription](https://github.com/bytedance/piano_transcription) 模型。它专门预测 88 键钢琴的起音、止音和力度；这不是通过删除短音符来整理 Basic Pitch 的结果。通用转录仍使用 Basic Pitch，钢琴专用模型不适合作为人声、吉他或完整多乐器混音的通用识别器。
 
@@ -32,9 +55,9 @@ python -m stemwork.piano_transcription AUDIO.wav RESULT.json CHECKPOINT.pth auto
 
 输出沿用 `[起始秒, 结束秒, MIDI音高, 力度/127]` 的事件列表。**当前编辑器只接收音符，尚不支持模型预测的踏板事件（CC64）**，因此不能承诺完整还原钢琴踏板与延音表现；官方模型生成的独立 MIDI 可含踏板，但它与当前应用导出的音符 MIDI 范围不同。
 
-### 安装与权重
+### 开发者手动安装与权重（安装版用户跳过）
 
-推荐单独使用 Python 3.11 环境，避免改变已有 Demucs/Basic Pitch 依赖。以下是 Windows / RTX 5090 示例，CPU 机器应换用兼容的 PyTorch CPU 发行版：
+以下仅适用于从源码配置或自备外部模型环境。推荐单独使用 Python 3.11 环境，避免改变已有 Demucs/Basic Pitch 依赖。Windows / RTX 5090 示例使用 GPU 依赖，与安装版自动准备的 CPU 环境不同；手动搭建 CPU 环境时应换用兼容的 PyTorch CPU 发行版：
 
 ```powershell
 py -3.11 -m venv .venv-piano
@@ -43,7 +66,7 @@ py -3.11 -m venv .venv-piano
 & ./.venv-piano/Scripts/python.exe -m pip install -e ./backend
 ```
 
-从 [作者公开的 Zenodo 4034264](https://zenodo.org/records/4034264) 下载 `CRNN_note_F1=0.9677_pedal_F1=0.9186.pth`，放入模型缓存的 `piano` 子目录，或设置 `STEMWORK_PIANO_CHECKPOINT` 指向它。未配置时，适配器查找 `STEMWORK_MODEL_CACHE/piano/`，再使用项目 `data/model-cache/piano/` 默认目录；不会写入用户主目录，也不会在每个识别任务中自动下载权重。
+手动搭建外部环境时，从 [作者公开的 Zenodo 4034264](https://zenodo.org/records/4034264) 下载 `CRNN_note_F1=0.9677_pedal_F1=0.9186.pth`，放入模型缓存的 `piano` 子目录，或设置 `STEMWORK_PIANO_CHECKPOINT` 指向它。未配置时，适配器查找 `STEMWORK_MODEL_CACHE/piano/`，再使用项目 `data/model-cache/piano/` 默认目录。适配器本身不会在每个识别任务中下载权重；**安装版的首次准备脚本会提前自动下载，并把正确路径传给服务**。
 
 | 校验项 | 官方文件与本轮下载结果 |
 | --- | --- |
@@ -53,7 +76,7 @@ py -3.11 -m venv .venv-piano
 
 适配器先验证文件大小和 SHA-256，再显式使用 `torch.load(..., weights_only=True)` 及严格模型参数加载，不回退到不安全的 pickle 加载，也不全局改写 PyTorch。缺权重、校验失败或依赖不兼容会明确报错。
 
-桌面配置中将 `pianoPython` 指向该隔离环境，将 `pianoCheckpoint` 指向权重；手动启动 worker 时分别使用 `STEMWORK_PIANO_PYTHON` 和 `STEMWORK_PIANO_CHECKPOINT`。完整配置见 [桌面说明](DESKTOP.md)。未设置专用解释器时会使用模型解释器，但该环境仍须安装钢琴依赖。
+继续使用外部环境时，在桌面配置中将 `pianoPython` 指向该隔离环境，将 `pianoCheckpoint` 指向权重；手动启动 worker 时分别使用 `STEMWORK_PIANO_PYTHON` 和 `STEMWORK_PIANO_CHECKPOINT`。完整配置见 [桌面说明](DESKTOP.md)。未设置专用解释器时会使用模型解释器，但该外部环境仍须安装钢琴依赖。安装版自动管理的环境会生成这些路径，不需要用户填写。
 
 **许可证与署名：** ByteDance 训练仓库声明 Apache-2.0；作者的 [piano-transcription-inference 0.0.6](https://pypi.org/project/piano-transcription-inference/0.0.6/) 发布元数据为 MIT；[Zenodo 权重记录](https://zenodo.org/records/4034264) 为 **CC BY 4.0**。使用或再分发权重时保留署名、来源和许可说明，注明适配器改动。署名：Qiuqiang Kong、Bochen Li、Xuchen Song、Yuan Wan、Yuxuan Wang，*High-resolution Piano Transcription with Pedals by Regressing Onsets and Offsets Times*，[论文](https://arxiv.org/abs/2010.01815)。本项目适配了安全加载、缓存路径和事件输出；没有修改模型权重。上游仓库已归档，文档原始环境为 Python 3.7 / PyTorch 1.4，不能假定所有新环境兼容。
 
@@ -94,7 +117,9 @@ py -3.11 -m venv .venv-piano
 
 证据位于工作区 `work/piano-cymbal-validation/result.json`。这是可供试听校对的新候选，**音符更少不等于准确率已提升**；没有逐音标准答案，不能给出准确率保证。踏板 CC64 仍未纳入应用输出。
 
-## 依赖选择
+## 开发者手动环境的依赖选择（安装版用户跳过）
+
+本节保留源码部署与 GPU 环境的配置方法。**0.2.0 安装版使用 `requirements-distribution-*.txt` 中的固定 CPU 依赖，通过首次准备脚本自动安装；使用 ONNX，不安装 TensorFlow 或 CUDA。** 下方 `requirements-models.txt`、GPU 安装命令和 Python 版本注意事项不属于普通安装用户的操作步骤。
 
 推荐把 API 与模型环境隔离，使用 **Python 3.11** 建立模型环境。项目 `backend/requirements-models.txt` 只安装第一层：Basic Pitch 转录与解码；PyTorch/Demucs 作为第二层按硬件单独安装。它是一组待目标机器实际验证的安装约束，不是跨平台锁文件。
 
@@ -108,7 +133,7 @@ py -3.11 -m venv .venv-piano
 
 **Python 3.12 注意点：** Basic Pitch 0.4.0 的安装元数据会在 Python ≥3.11 上要求 `tensorflow>=2.4.1,<2.15.1`，该范围没有标准 Python 3.12 轮子。不要把它直接混装到现有 3.12 API 环境。Python 3.11 常规安装会同时安装 TensorFlow，但本适配器显式选用 ONNX 模型并关闭其 GPU 可见性。另一种较轻的 Windows 环境是 Python 3.10，此时 Basic Pitch 官方依赖默认是 ONNX Runtime；本轮以 3.11 为基线。
 
-### Windows / RTX 5090 示例
+### 源码部署：Windows / RTX 5090 示例
 
 在项目根目录的 PowerShell 中执行，Python 3.11 须已安装：
 
@@ -131,14 +156,16 @@ CPU 环境使用 PyTorch 官方 CPU 轮子索引替代 `cu128`。CUDA 驱动是�
 
 API/队列进程若使用独立轻量环境，为解码 MP3/M4A 等格式提供系统 FFmpeg，或在该环境安装 `imageio-ffmpeg`；WAV/FLAC 优先用 `soundfile`。也可设置 `STEMWORK_FFMPEG` 为 FFmpeg 可执行文件绝对路径。本适配器先输出可试听 PCM WAV；无损输入保持采样率，由模型按需重采样；其他格式经 FFmpeg 转成 44.1 kHz 双声道 WAV。
 
-## 运行约定
+## 开发与运行约定
+
+下面的项目目录默认值适用于源码或手动启动后端。安装版通过自动生成的运行清单传入解释器与缓存路径，默认位于 Windows 用户数据目录下的 `recognition/runtime`，不要求用户修改这些参数。
 
 - 模型依赖均延迟加载。导入 `stemwork.pipeline` 不导入 PyTorch、Basic Pitch、NumPy 等包。
 - `STEMWORK_MODEL_PYTHON` 是服务端配置，不来自上传请求。未设置时使用 worker 自身的 Python。
 - `device=auto/cpu/cuda` 决定 Demucs 和钢琴专用模型的设备；Basic Pitch 使用 CPU ONNX 转录。
 - 模型、Hugging Face、Numba 缓存默认保存在项目 `data/model-cache`；可用 `STEMWORK_MODEL_CACHE` 改为指定本地目录。Basic Pitch 权重随 Python 包安装。
 - 每次任务在输出目录创建唯一 `run-*` 子目录，避免重试读到旧分轨。日志和中间音符 JSON 留在该目录供排查。
-- 首次 Demucs 运行按上游逻辑下载权重；4.1.0 的 `htdemucs` 已验证从作者的 Hugging Face 仓库 `adefossez/HTDemucs` 下载并缓存 Safetensors。本模块不会在导入、启动 API 或单元测试时下载大模型。
+- 手动环境缺少 Demucs 缓存时，首次运行按上游逻辑下载权重；4.1.0 的 `htdemucs` 已验证从作者的 Hugging Face 仓库 `adefossez/HTDemucs` 下载并缓存 Safetensors。安装版会在环境准备阶段预先下载并校验四轨和六轨权重。本模块不会在导入、启动 API 或单元测试时下载大模型。
 - Demucs、Basic Pitch 和钢琴专用转录在子进程运行。取消时终止并回收当前子进程。轨道间重载模型会产生额外开销，后续可改为常驻推理进程。
 - 长阶段进度为 `null`；转录阶段数字表示已处理音轨占比，不能当作预计剩余时间。
 - 单轨失败保留音频并返回 `failed`；全部有音高轨道失败时抛出 `PipelineError`，避免误报完成；取消抛出 `PipelineCancelled`。
