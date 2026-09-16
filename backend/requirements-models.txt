@@ -1,0 +1,12 @@
+# Layer 1: transcription + decoding only, in an isolated Python 3.11 environment.
+# This layer does not install PyTorch or Demucs. See ../docs/MODELS.md.
+# Layer 2, separately: torch==2.8.0 from the official cu128 index (RTX 5090),
+# then demucs==4.1.0 from PyPI. CPU installations use the official CPU index.
+basic-pitch==0.4.0
+# Basic Pitch's resampy dependency still imports pkg_resources.
+setuptools>=75,<81
+onnxruntime>=1.20,<2
+numpy>=1.26,<2
+soundfile>=0.12,<1
+librosa>=0.10.2,<0.12
+imageio-ffmpeg>=0.5,<0.7

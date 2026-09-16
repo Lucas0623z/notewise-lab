@@ -1,0 +1,146 @@
+.editor-page .recognition-context {
+  padding: 8px 22px;
+  border-bottom: 1px solid var(--border);
+  background: var(--selected);
+  font-size: 11px;
+  line-height: 1.55;
+  flex-shrink: 0;
+}
+.editor-page .note-audition {
+  margin: 16px 0 8px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--selected);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.editor-page .note-audition strong {
+  font-size: 14px;
+}
+.editor-page .note-audition p {
+  margin: 5px 0 10px;
+}
+.editor-page .note-audition > span {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.editor-page .recognition-context p {
+  margin: 0;
+}
+.editor-page .recognition-context strong {
+  margin-right: 6px;
+}
+.editor-page .recognition-context details {
+  margin-top: 3px;
+}
+.editor-page .recognition-context summary {
+  cursor: pointer;
+  color: var(--muted-foreground);
+}
+.editor-page .recognition-context ul {
+  margin: 7px 0 2px;
+  padding-left: 18px;
+  max-height: 130px;
+  overflow: auto;
+}
+.editor-page .recognition-context li {
+  margin: 3px 0;
+  overflow-wrap: anywhere;
+}
+.editor-page .solo-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 22px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+  font-size: 11px;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+.editor-page .solo-notice > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.editor-page .solo-notice strong {
+  display: block;
+  font-weight: 600;
+}
+.editor-page .solo-notice span {
+  color: var(--muted-foreground);
+}
+.editor-page .solo-notice p {
+  margin: 2px 0 0;
+}
+.editor-page .solo-notice > button {
+  flex-shrink: 0;
+}
+.editor-page .arrangement {
+  align-items: flex-start;
+}
+.editor-page .arrangement .track-control {
+  padding: 7px 12px;
+}
+.editor-page .arrangement .track-name {
+  min-width: 0;
+}
+.editor-page .arrangement .track-name span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.editor-page .arrangement .track-status {
+  height: 16px;
+  font-size: 10px;
+  line-height: 16px;
+  color: var(--muted-foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.editor-page .arrangement .track-mix {
+  margin-top: 3px;
+}
+.editor-page .arrangement .low-signal .track-name {
+  color: var(--muted-foreground);
+}
+.editor-page .arrangement .low-signal .track-name i {
+  background: #9299a3 !important;
+}
+.editor-page .arrangement .mix-silent .track-name {
+  opacity: 0.6;
+}
+.editor-page .arrangement .wave-lane.low-signal {
+  opacity: 0.65;
+}
+.editor-page .arrangement .wave-lane.mix-silent {
+  opacity: 0.3;
+}
+.editor-page .piano-audition-note {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 16px;
+  background: var(--selected);
+  font-size: 11px;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+.editor-page .piano-audition-note button {
+  flex-shrink: 0;
+}
+.editor-page .piano-signal-note {
+  margin: 0;
+  padding: 5px 16px;
+  color: var(--muted-foreground);
+  font-size: 11px;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+.editor-page .drum-voice-field {
+  margin-top: 14px;
+}

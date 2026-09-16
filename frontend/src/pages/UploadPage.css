@@ -1,0 +1,93 @@
+.upload-service-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 18px 20px;
+  margin: 20px 0;
+}
+
+.upload-service-status .service-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.upload-service-status p {
+  margin: 6px 0 0;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.upload-service-status .service-capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 18px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.upload-service-status .service-state {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+.upload-service-status[data-state="ready"] .service-state {
+  background: #248a3d;
+  opacity: 1;
+}
+
+.upload-demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.upload-service-hint {
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.service-setup-progress progress {
+  display: block;
+  width: min(100%, 380px);
+  height: 7px;
+  margin: 12px 0 6px;
+  accent-color: var(--accent, #007aff);
+}
+
+.service-setup-log {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.service-setup-log summary {
+  cursor: pointer;
+}
+
+.service-setup-log pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 180px;
+  overflow: auto;
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  .upload-service-status,
+  .upload-page .demo-notice {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .upload-demo-actions {
+    margin-left: 0;
+  }
+}

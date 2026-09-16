@@ -1,0 +1,116 @@
+{
+  "name": "stem-studio-desktop",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "test:desktop": "node --test electron/test-*.cjs",
+    "dev:desktop": "node electron/dev.cjs",
+    "desktop:start": "electron .",
+    "desktop:prepare": "python ../scripts/prepare_windows_runtime.py && node ../scripts/collect_frontend_licenses.cjs && powershell.exe -NoProfile -File ../scripts/prepare_vc_runtime.ps1",
+    "desktop:package": "pnpm desktop:prepare && pnpm build && electron-builder --win nsis --x64",
+    "desktop:portable": "pnpm desktop:prepare && pnpm build && electron-builder --win portable --x64",
+    "desktop:dir": "pnpm desktop:prepare && pnpm build && electron-builder --win --dir --x64"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/noto-sans-sc": "^5.3.0",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@tanstack/react-query": "^5.90.0",
+    "@tonejs/midi": "^2.0.28",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.0",
+    "tailwind-merge": "^3.3.1",
+    "tone": "^15.1.22",
+    "wavesurfer.js": "^7.10.1",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/node": "^22.18.6",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.3",
+    "electron": "44.4.0",
+    "electron-builder": "26.15.3",
+    "prettier": "3.6.2",
+    "tailwindcss": "^4.1.13",
+    "typescript": "~5.9.2",
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4"
+  },
+  "description": "NoteWise Lab · 智音lab · 本机多轨音乐编辑与音频转录",
+  "author": "Lucas0623z",
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "cn.stemstudio.desktop",
+    "productName": "NoteWise Lab",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*.cjs",
+      "!electron/test-*.cjs",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "build-resources/licenses",
+        "to": "licenses"
+      },
+      {
+        "from": "build-resources/runtime",
+        "to": "runtime",
+        "filter": ["**/*", "!**/__pycache__/**", "!**/*.pyc"]
+      },
+      {
+        "from": "build-resources/backend",
+        "to": "backend"
+      },
+      {
+        "from": "../docs/THIRD-PARTY-NOTICES.md",
+        "to": "THIRD-PARTY-NOTICES.md"
+      }
+    ],
+    "win": {
+      "icon": "public/branding/zhiyinlab-logo.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "NoteWise-Lab-Setup-${version}-${arch}.${ext}",
+      "signAndEditExecutable": true,
+      "signExecutable": false
+    },
+    "nsis": {
+      "include": "installer/prerequisites.nsh",
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": false,
+      "deleteAppDataOnUninstall": false,
+      "installerLanguages": ["zh_CN", "en_US"],
+      "displayLanguageSelector": true
+    },
+    "portable": {
+      "artifactName": "NoteWise-Lab-${version}-${arch}.${ext}"
+    },
+    "npmRebuild": false
+  }
+}

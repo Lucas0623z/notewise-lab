@@ -1,0 +1,10 @@
+{
+  "python": ".venv-api/Scripts/python.exe",
+  "modelPython": ".venv-models/Scripts/python.exe",
+  "pianoPython": ".venv-piano/Scripts/python.exe",
+  "pianoCheckpoint": "data/model-cache/piano/CRNN_note_F1=0.9677_pedal_F1=0.9186.pth",
+  "backendDirectory": "backend",
+  "dataDirectory": "data",
+  "modelCacheDirectory": "data/model-cache",
+  "apiOrigin": "http://127.0.0.1:8000"
+}

@@ -1,0 +1,23 @@
+{
+  "testType": "synthetic execution smoke test, not a quality benchmark",
+  "mode": "transcribe_only",
+  "requestedDevice": "auto",
+  "inputSeconds": 6,
+  "elapsedSeconds": 14.376,
+  "jobStatus": "succeeded",
+  "error": null,
+  "projectId": "2ceed873ea10437cbc4687a946affb3f",
+  "tracks": [
+    {
+      "kind": "other",
+      "notes": 6,
+      "status": "completed"
+    }
+  ],
+  "warnings": [
+    "BPM 使用用户设定值（未填写时为 120），当前未进行自动节拍检测。",
+    "音符为模型初步转录，尚未进行节拍量化、乐谱排版或弯音编辑。",
+    "本次仅转录原始音频；未进行分轨，最适合单件乐器录音。"
+  ],
+  "midiFile": "basic-pitch-smoke.mid"
+}

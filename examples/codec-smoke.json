@@ -1,0 +1,161 @@
+{
+  "source": {
+    "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\outputs\\stem-studio\\examples\\synthetic-mixture-8s.wav",
+    "fileBytes": 1411244,
+    "frames": 352800,
+    "sampleRate": 44100,
+    "channels": 2,
+    "durationSeconds": 8.0,
+    "peak": 0.819976806640625,
+    "rms": 0.1386004090309143,
+    "readable": true
+  },
+  "python": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\venv-models\\Scripts\\python.exe",
+  "ffmpeg": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\venv-models\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+  "mode": "transcribe_only",
+  "runs": [
+    {
+      "format": "mp3",
+      "input": {
+        "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\codec-smoke\\synthetic-mixture-8s.mp3",
+        "fileBytes": 193767,
+        "frames": 352800,
+        "sampleRate": 44100,
+        "channels": 2,
+        "durationSeconds": 8.0,
+        "peak": 0.752919614315033,
+        "rms": 0.13423626124858856,
+        "readable": true
+      },
+      "succeeded": true,
+      "durationSeconds": 8.0,
+      "noteCount": 35,
+      "tracks": [
+        {
+          "name": "原始音频（未分轨）",
+          "transcriptionStatus": "completed",
+          "noteCount": 35,
+          "outputAudio": {
+            "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\codec-smoke\\mp3-output\\run-687dc837d0e74a52893371b34a4a614f\\input.wav",
+            "fileBytes": 1411278,
+            "frames": 352800,
+            "sampleRate": 44100,
+            "channels": 2,
+            "durationSeconds": 8.0,
+            "peak": 0.7529296875,
+            "rms": 0.13423627614974976,
+            "readable": true,
+            "stdlibWaveReadable": true,
+            "sampleWidthBytes": 2
+          },
+          "warnings": []
+        }
+      ],
+      "warnings": [
+        "BPM 使用用户设定值（未填写时为 120），当前未进行自动节拍检测。",
+        "音符为模型初步转录，尚未进行节拍量化、乐谱排版或弯音编辑。",
+        "本次仅转录原始音频；未进行分轨，最适合单件乐器录音。"
+      ],
+      "elapsedSeconds": 12.953,
+      "events": [
+        {
+          "elapsedSeconds": 0.016,
+          "stage": "decode",
+          "progress": null,
+          "message": "校验模型环境并解码音频。"
+        },
+        {
+          "elapsedSeconds": 0.094,
+          "stage": "transcribe",
+          "progress": 0.0,
+          "message": "正在处理原始音频（未分轨）（1/1）。"
+        },
+        {
+          "elapsedSeconds": 12.953,
+          "stage": "transcribe",
+          "progress": 1.0,
+          "message": "已处理 1/1 条音轨。"
+        },
+        {
+          "elapsedSeconds": 12.953,
+          "stage": "done",
+          "progress": 1.0,
+          "message": "分轨与音符转录处理完成。"
+        }
+      ],
+      "publishedTrackCount": 1
+    },
+    {
+      "format": "flac",
+      "input": {
+        "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\codec-smoke\\synthetic-mixture-8s.flac",
+        "fileBytes": 322027,
+        "frames": 352800,
+        "sampleRate": 44100,
+        "channels": 2,
+        "durationSeconds": 8.0,
+        "peak": 0.819976806640625,
+        "rms": 0.1386004090309143,
+        "readable": true
+      },
+      "succeeded": true,
+      "durationSeconds": 8.0,
+      "noteCount": 35,
+      "tracks": [
+        {
+          "name": "原始音频（未分轨）",
+          "transcriptionStatus": "completed",
+          "noteCount": 35,
+          "outputAudio": {
+            "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\codec-smoke\\flac-output\\run-d674d124ec724558af5d2380feb67014\\input.wav",
+            "fileBytes": 1411244,
+            "frames": 352800,
+            "sampleRate": 44100,
+            "channels": 2,
+            "durationSeconds": 8.0,
+            "peak": 0.819976806640625,
+            "rms": 0.1386004090309143,
+            "readable": true,
+            "stdlibWaveReadable": true,
+            "sampleWidthBytes": 2,
+            "losslessDecodedEqualsSource": true
+          },
+          "warnings": []
+        }
+      ],
+      "warnings": [
+        "BPM 使用用户设定值（未填写时为 120），当前未进行自动节拍检测。",
+        "音符为模型初步转录，尚未进行节拍量化、乐谱排版或弯音编辑。",
+        "本次仅转录原始音频；未进行分轨，最适合单件乐器录音。"
+      ],
+      "elapsedSeconds": 4.125,
+      "events": [
+        {
+          "elapsedSeconds": 0.016,
+          "stage": "decode",
+          "progress": null,
+          "message": "校验模型环境并解码音频。"
+        },
+        {
+          "elapsedSeconds": 0.079,
+          "stage": "transcribe",
+          "progress": 0.0,
+          "message": "正在处理原始音频（未分轨）（1/1）。"
+        },
+        {
+          "elapsedSeconds": 4.11,
+          "stage": "transcribe",
+          "progress": 1.0,
+          "message": "已处理 1/1 条音轨。"
+        },
+        {
+          "elapsedSeconds": 4.11,
+          "stage": "done",
+          "progress": 1.0,
+          "message": "分轨与音符转录处理完成。"
+        }
+      ],
+      "publishedTrackCount": 1
+    }
+  ]
+}

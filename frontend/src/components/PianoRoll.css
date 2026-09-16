@@ -1,0 +1,170 @@
+.piano-roll {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border, #d2d2d7);
+  border-radius: 12px;
+  background: var(--background, #fff);
+  color: var(--foreground, #1d1d1f);
+  font: 14px/1.4
+    var(--font-ui, "Inter Variable", "Noto Sans SC Variable", sans-serif);
+}
+
+.piano-roll__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 58px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border, #d2d2d7);
+}
+
+.piano-roll__heading,
+.piano-roll__controls,
+.piano-roll__zoom,
+.piano-roll__follow,
+.piano-roll__select-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.piano-roll__heading {
+  gap: 12px;
+}
+.piano-roll__heading strong {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.piano-roll__heading span,
+.piano-roll__footer {
+  color: var(--muted-foreground, #6e6e73);
+}
+.piano-roll__controls {
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.piano-roll__zoom {
+  gap: 4px;
+}
+.piano-roll__zoom > span {
+  margin-right: 3px;
+}
+.piano-roll__zoom button {
+  min-width: 30px;
+  min-height: 30px;
+  padding: 3px 8px;
+  font: inherit;
+}
+.piano-roll__controls > button {
+  font: inherit;
+}
+.piano-roll__follow {
+  gap: 6px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.piano-roll__follow input {
+  accent-color: #007aff;
+  width: 15px;
+  height: 15px;
+  margin: 0;
+}
+.piano-roll__select-label select {
+  min-width: 65px;
+  min-height: 30px;
+  padding: 3px 6px;
+  border: 1px solid var(--border, #d2d2d7);
+  border-radius: 6px;
+  color: inherit;
+  background: var(--background, #fff);
+  font: inherit;
+}
+
+.piano-roll__viewport {
+  --roll-background: #fff;
+  --roll-alternate: #f5f5f7;
+  --roll-border: #d2d2d7;
+  --roll-subtle: #e8e8ed;
+  --roll-text: #1d1d1f;
+  --roll-secondary: #6e6e73;
+  --roll-black-key: #3a3a3c;
+  --roll-white-key: #fff;
+  --roll-accent: #007aff;
+  position: relative;
+  overflow: auto;
+  overscroll-behavior: contain;
+  height: 548px;
+  max-height: 64vh;
+  min-height: 300px;
+  background: var(--roll-background);
+  scrollbar-color: #aeaeb2 transparent;
+}
+
+.piano-roll__space {
+  position: relative;
+}
+.piano-roll__canvas {
+  position: sticky;
+  left: 0;
+  top: 0;
+  display: block;
+  touch-action: none;
+  outline: none;
+}
+.piano-roll__canvas:focus-visible {
+  box-shadow: inset 0 0 0 3px #007aff;
+}
+.piano-roll__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  border-top: 1px solid var(--border, #d2d2d7);
+  padding: 10px 16px;
+}
+.piano-roll__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .piano-roll__viewport {
+    --roll-background: #1c1c1e;
+    --roll-alternate: #242426;
+    --roll-border: #48484a;
+    --roll-subtle: #323234;
+    --roll-text: #f5f5f7;
+    --roll-secondary: #aeaeb2;
+    --roll-black-key: #000;
+    --roll-white-key: #2c2c2e;
+    --roll-accent: #0a84ff;
+  }
+}
+
+@media (max-width: 720px) {
+  .piano-roll__toolbar {
+    padding: 12px;
+  }
+  .piano-roll__controls {
+    gap: 10px;
+  }
+  .piano-roll__heading {
+    width: 100%;
+  }
+  .piano-roll__viewport {
+    max-height: none;
+    height: 380px;
+  }
+  .piano-roll__footer {
+    padding: 10px 12px;
+  }
+}

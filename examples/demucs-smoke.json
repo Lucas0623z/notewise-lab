@@ -1,0 +1,168 @@
+{
+  "input": {
+    "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\smoke-demucs\\original-synthetic-mixture-8s.wav",
+    "seconds": 8.0,
+    "sampleRate": 44100,
+    "channels": 2,
+    "sha256": "8158b7a8e0a45ea24e0229c78eee73bf619fe89905676af58963622460332ce7",
+    "description": "Original deterministic synthesized bass, lead, harmonic hum and drum impulses; not a recorded song."
+  },
+  "options": {
+    "mode": "demucs_basic_pitch",
+    "separationModel": "htdemucs",
+    "device": "auto",
+    "bpm": 120
+  },
+  "python": "3.11.16 (main, Sep  1 2026, 14:15:24) [MSC v.1944 64 bit (AMD64)]",
+  "torchCuda": "12.8",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "demucs": "4.1.0",
+    "basic-pitch": "0.4.0",
+    "onnxruntime": "1.30.0",
+    "soundfile": "0.14.0",
+    "numpy": "1.26.4",
+    "sphn": "0.2.1"
+  },
+  "success": true,
+  "pipelineSeconds": 31.824,
+  "tracks": [
+    {
+      "kind": "vocal",
+      "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\smoke-demucs\\pipeline-output\\run-d0b949a67cc24619a2776ad1326241c5\\separated\\htdemucs\\vocals.wav",
+      "sampleRate": 44100,
+      "samples": 352800,
+      "durationSeconds": 8.0,
+      "channels": 2,
+      "rms": 0.0008467911709491015,
+      "peak": 0.00299072265625,
+      "notes": 29,
+      "transcriptionStatus": "completed",
+      "warnings": []
+    },
+    {
+      "kind": "drums",
+      "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\smoke-demucs\\pipeline-output\\run-d0b949a67cc24619a2776ad1326241c5\\separated\\htdemucs\\drums.wav",
+      "sampleRate": 44100,
+      "samples": 352800,
+      "durationSeconds": 8.0,
+      "channels": 2,
+      "rms": 0.05451155754895382,
+      "peak": 0.721832275390625,
+      "notes": 0,
+      "transcriptionStatus": "unsupported",
+      "warnings": [
+        "当前未接入鼓转录模型，仅保留真实鼓音频，不生成占位音符。"
+      ]
+    },
+    {
+      "kind": "bass",
+      "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\smoke-demucs\\pipeline-output\\run-d0b949a67cc24619a2776ad1326241c5\\separated\\htdemucs\\bass.wav",
+      "sampleRate": 44100,
+      "samples": 352800,
+      "durationSeconds": 8.0,
+      "channels": 2,
+      "rms": 0.11045193271180949,
+      "peak": 0.2869873046875,
+      "notes": 7,
+      "transcriptionStatus": "completed",
+      "warnings": []
+    },
+    {
+      "kind": "other",
+      "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\smoke-demucs\\pipeline-output\\run-d0b949a67cc24619a2776ad1326241c5\\separated\\htdemucs\\other.wav",
+      "sampleRate": 44100,
+      "samples": 352800,
+      "durationSeconds": 8.0,
+      "channels": 2,
+      "rms": 0.06088807592209973,
+      "peak": 0.292205810546875,
+      "notes": 19,
+      "transcriptionStatus": "completed",
+      "warnings": [
+        "这是剩余乐器混合轨，不等于单一乐器，识别结果可能混杂。"
+      ]
+    }
+  ],
+  "midi": {
+    "path": "D:\\Chatgpt\\2026-09-15\\https-lingpu-cn\\work\\smoke-demucs\\recognized-four-stems.mid",
+    "bytes": 661,
+    "tracks": 5,
+    "notes": 55,
+    "durationSeconds": 7.887499999999996
+  },
+  "warnings": [
+    "BPM 使用用户设定值（未填写时为 120），当前未进行自动节拍检测。",
+    "音符为模型初步转录，尚未进行节拍量化、乐谱排版或弯音编辑。"
+  ],
+  "totalSeconds": 31.846,
+  "progress": [
+    {
+      "seconds": 0.035,
+      "stage": "decode",
+      "progress": null,
+      "message": "校验模型环境并解码音频。"
+    },
+    {
+      "seconds": 0.105,
+      "stage": "separate",
+      "progress": null,
+      "message": "Demucs 正在分离音轨；首次运行可能需要下载权重。"
+    },
+    {
+      "seconds": 20.056,
+      "stage": "transcribe",
+      "progress": 0.0,
+      "message": "正在处理人声（1/4）。"
+    },
+    {
+      "seconds": 24.225,
+      "stage": "transcribe",
+      "progress": 0.25,
+      "message": "已处理 1/4 条音轨。"
+    },
+    {
+      "seconds": 24.226,
+      "stage": "transcribe",
+      "progress": 0.25,
+      "message": "正在处理鼓（2/4）。"
+    },
+    {
+      "seconds": 24.226,
+      "stage": "transcribe",
+      "progress": 0.5,
+      "message": "已处理 2/4 条音轨。"
+    },
+    {
+      "seconds": 24.226,
+      "stage": "transcribe",
+      "progress": 0.5,
+      "message": "正在处理贝斯（3/4）。"
+    },
+    {
+      "seconds": 27.978,
+      "stage": "transcribe",
+      "progress": 0.75,
+      "message": "已处理 3/4 条音轨。"
+    },
+    {
+      "seconds": 27.979,
+      "stage": "transcribe",
+      "progress": 0.75,
+      "message": "正在处理其他（混合轨）（4/4）。"
+    },
+    {
+      "seconds": 31.824,
+      "stage": "transcribe",
+      "progress": 1.0,
+      "message": "已处理 4/4 条音轨。"
+    },
+    {
+      "seconds": 31.824,
+      "stage": "done",
+      "progress": 1.0,
+      "message": "分轨与音符转录处理完成。"
+    }
+  ]
+}

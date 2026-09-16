@@ -1,0 +1,9 @@
+/* Locally bundled OFL fonts. Vite emits the WOFF2 assets; no font CDN is used. */
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/noto-sans-sc";
+
+:root {
+  --font-ui: "Inter Variable", "Noto Sans SC Variable", sans-serif;
+  --font-ui-latin: "Inter Variable";
+  --font-ui-cjk: "Noto Sans SC Variable";
+}

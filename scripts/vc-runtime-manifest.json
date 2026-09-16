@@ -1,0 +1,17 @@
+{
+  "name": "Microsoft Visual C++ v14 Redistributable (x64)",
+  "version": "14.51.36247.0",
+  "architecture": "x64",
+  "filename": "vc_redist.x64.exe",
+  "bytes": 18731856,
+  "officialDownloadPage": "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist",
+  "discoveryUrl": "https://aka.ms/vc14/vc_redist.x64.exe",
+  "url": "https://download.visualstudio.microsoft.com/download/pr/ebdab8e5-1d7b-4d9f-a11b-cbb1720c3b12/843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295C/VC_redist.x64.exe",
+  "sha256": "843068991daaa1f73ad9f6239bce4d0f6a07a51f18c37ea2a867e9beca71295c",
+  "signerSubject": "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+  "signerThumbprint": "1D77A9B9E8FE2075D9AD15123257FB90DB0DA4A1",
+  "licenseUrl": "https://visualstudio.microsoft.com/license-terms/vs2026-ga-visualcpp-v14-redist-runtime/",
+  "redistributionTermsUrl": "https://learn.microsoft.com/en-us/visualstudio/releases/2026/redistribution",
+  "verifiedOn": "2026-09-15",
+  "notes": "Complete official installer; not the smaller cached bootstrap engine. Redistributable remains subject to Microsoft terms. End users accept terms in Microsoft's visible installer. Installation was not executed during preparation."
+}

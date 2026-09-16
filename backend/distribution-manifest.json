@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "runtimeRevision": "cpu-20260915-1",
+  "python": "3.11",
+  "platform": "win_amd64",
+  "indexes": {
+    "pypi": "https://pypi.org/simple",
+    "torch": "https://download.pytorch.org/whl/cpu"
+  },
+  "installerPackages": ["pip==25.1.1", "setuptools==79.0.1", "wheel==0.48.0", "packaging==26.3"],
+  "demucs": [
+    {
+      "name": "htdemucs",
+      "repo": "adefossez/HTDemucs",
+      "revision": "cbc8a9b1a87023b7fd74e7b3412e6321c0eab003",
+      "files": [
+        {"name": "htdemucs.yaml", "bytes": 21, "sha256": "239c445d0b14454d541ad8bd9bb271c9e536d267e8a4625208744cbb2e7bb66c"},
+        {"name": "955717e8.safetensors", "bytes": 84025440, "sha256": "d9fa14133cfcc034a6758923bb3a8ca9f8dfd0b582134643bbf83f72c17576dd"}
+      ]
+    },
+    {
+      "name": "htdemucs_6s",
+      "repo": "adefossez/HTDemucs-6s",
+      "revision": "3c5ee475be622df764938de97e4281a7b07ffa58",
+      "files": [
+        {"name": "htdemucs_6s.yaml", "bytes": 21, "sha256": "207405151270af8fd81c2373c25d27950916682ac91dca7884a11ce13dad6f58"},
+        {"name": "5c90dfd2.safetensors", "bytes": 54885744, "sha256": "d2a1745f0744721f6b8ca5bf469b67c651ea5ed1b52998cab033b2158609d411"}
+      ]
+    }
+  ],
+  "piano": {
+    "name": "CRNN_note_F1=0.9677_pedal_F1=0.9186.pth",
+    "url": "https://zenodo.org/record/4034264/files/CRNN_note_F1%3D0.9677_pedal_F1%3D0.9186.pth?download=1",
+    "bytes": 171966578,
+    "sha256": "c3fa9730725bf4a762f1c14bc80cd5986eacda01b026f5a4a2525cd607876141",
+    "license": "CC-BY-4.0",
+    "attribution": "Qiuqiang Kong, Bochen Li, Xuchen Song, Yuan Wan, Yuxuan Wang. High-resolution Piano Transcription with Pedals by Regressing Onsets and Offsets Times. https://arxiv.org/abs/2010.01815"
+  }
+}

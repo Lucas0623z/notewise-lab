@@ -1,0 +1,2 @@
+# Official CPU-only wheel, separate index; never resolve CUDA dependencies.
+torch==2.8.0+cpu
