@@ -1,6 +1,6 @@
 # NoteWise Lab / 智音lab · Windows 0.2.0 安装版
 
-本文说明 **NoteWise Lab（智音lab）0.2.0 Windows 安装版**。全新目录的自动环境准备、三条真实 CPU 推理链路、MIDI 回读与 NSIS 构建均通过。VC++ 运行库已接入，完整新机交互验收尚未完成。私有仓库 [Lucas0623z/notewise-lab](https://github.com/Lucas0623z/notewise-lab) 已创建；发布正等待 GitHub 身份验证，尚未发布 Release。
+本文说明 **NoteWise Lab（智音lab）0.2.0 Windows 安装版**。全新目录的自动环境准备、三条真实 CPU 推理链路、MIDI 回读与 NSIS 构建均通过。VC++ 运行库已接入，完整新机交互验收尚未完成。私有仓库为 [Lucas0623z/notewise-lab](https://github.com/Lucas0623z/notewise-lab)，版本下载入口为 [Releases](https://github.com/Lucas0623z/notewise-lab/releases)，仅获授权的账户可访问。
 
 ## 安装与首次启动
 

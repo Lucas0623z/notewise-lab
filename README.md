@@ -4,7 +4,7 @@
 
 上传音乐，分离音轨并识别音符，再在钢琴卷帘中编辑、试听和导出 MIDI。**0.2.0** 提供 Windows 安装向导与首次自动准备 CPU 识别环境，用户无需自行安装 Python、配置模型或打开终端。音频、工程和识别计算均留在本机；首次准备需要联网下载依赖和模型。
 
-全新目录的环境准备、真实 CPU 推理与 MIDI 回读已通过验证，NoteWise Lab 品牌的 NSIS 安装与卸载程序已编译，Windows VC++ 前置组件已接入。尚未在一台缺少这些组件的新电脑上完成完整交互验收。私有仓库 [Lucas0623z/notewise-lab](https://github.com/Lucas0623z/notewise-lab) 已创建，发布正等待 GitHub 身份验证，尚未发布 Release。详细结果见 [当前状态](docs/STATUS.md)。
+全新目录的环境准备、真实 CPU 推理与 MIDI 回读已通过验证，NoteWise Lab 品牌的 NSIS 安装与卸载程序已编译，Windows VC++ 前置组件已接入。尚未在一台缺少这些组件的新电脑上完成完整交互验收。私有仓库为 [Lucas0623z/notewise-lab](https://github.com/Lucas0623z/notewise-lab)，安装包、源码和校验文件的发布入口为 [Releases](https://github.com/Lucas0623z/notewise-lab/releases)。只有获授权的账户可以访问。详细结果见 [当前状态](docs/STATUS.md)。
 
 ## 安装与使用
 

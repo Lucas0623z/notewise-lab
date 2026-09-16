@@ -4,7 +4,7 @@
 
 使用最终 **NoteWise Lab** 品牌的 Windows x64 NSIS 安装与卸载程序已编译通过。中文名为「智音lab」，继续使用智字与音符 Logo；当前安装包文件名为 `NoteWise-Lab-Setup-0.2.0-x64.exe`。内部应用标识和旧数据目录保持兼容。
 
-私有仓库 [Lucas0623z/notewise-lab](https://github.com/Lucas0623z/notewise-lab) 已创建并确认为 Private。发布正等待 GitHub 身份验证，尚未发布 Release。
+私有仓库 [Lucas0623z/notewise-lab](https://github.com/Lucas0623z/notewise-lab) 已创建并确认为 Private。安装包、源码、说明和 SHA-256 校验文件的发布入口为 [Releases](https://github.com/Lucas0623z/notewise-lab/releases)。
 
 安装包包含固定来源与 SHA-256 校验的完整 CPython 3.11.16、后端、首次安装脚本和前端第三方许可。默认首次启动自动下载并安装 CPU 依赖与模型；已有外部配置继续优先使用。运行环境与后端复制到用户数据目录，安装失败显示实际错误并支持手动重试。Windows VC++ 前置运行库已接入安装向导，版本 14.51.36247.0 的微软完整安装器已核验签名、大小与 SHA-256；缺少时由用户在微软窗口完成条款和提权确认，已有满足版本时跳过。
 
@@ -18,7 +18,7 @@
 
 11 条 WAV 均完整可读，导出 MIDI 音符开关配对、轨名回读正确，鼓使用第 10 通道。所有模型来自新装的 CPU 环境；这些是功能链路测试，不是准确率评测，也不等于在一台未装任何运行库的新 Windows 电脑上完成验收。
 
-工作区验收证据：`work/installer-service-qa/real-cpu-report.json`。运行环境含下载缓存约占 5.35 GB，首次下载还需要额外空间；建议预留至少 10 GB。NSIS 安装与卸载程序已编译通过；没有在用户当前系统执行微软安装器或卸载操作，缺少运行库的新机交互验收尚未完成。GitHub Release 发布等待身份验证。
+工作区验收证据：`work/installer-service-qa/real-cpu-report.json`。运行环境含下载缓存约占 5.35 GB，首次下载还需要额外空间；建议预留至少 10 GB。NSIS 安装与卸载程序已编译通过；没有在用户当前系统执行微软安装器或卸载操作，缺少运行库的新机交互验收尚未完成。
 
 ## 历史：v0.1.4 后的品牌更新
 
